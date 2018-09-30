@@ -11,6 +11,8 @@
             @endforeach
              {!! link_to_route('tasks.create', '新規タスクの投稿') !!}
         </ul>
+    @else
+        {!! link_to_route('tasks.create', '新規タスクの投稿') !!}
     @endif
 
 @endsection
