@@ -16,7 +16,6 @@
 //});
 
 Route::get('/', 'TasksController@index');
-Route::resource('tasks', 'TasksController');
 
 ########################################################################################
 //登録受付（フォーマット入力画面）
@@ -35,5 +34,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 ########################################################################################
 //認証が必要なページ
 Route::group(['middleware' => ['auth']], function () {
+
+    Route::resource('tasks', 'TasksController');
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
 });

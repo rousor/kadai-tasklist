@@ -27,7 +27,7 @@
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <li>{!! link_to_route('tasks.create', '新規タスクの投稿') !!}</li>
+                <li>{!! link_to_route('tasks.create', '新規タスクを追加', null , ['class' => 'bg-primary text-warning']) !!}</li>
                 </ul>
             </div>
         </div>

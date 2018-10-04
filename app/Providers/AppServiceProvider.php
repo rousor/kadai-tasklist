@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //MYSQL仕様：2018-10-04
         \Schema::defaultStringLength(191);
     }
 
