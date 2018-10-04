@@ -50,8 +50,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',
-            // 半角英数字記号をそれぞれ1種類以上の６文字以上（大文字：(?=.*?[A-Z])は除外）
-            'password' => 'required|string|regex:#\A(?=.*?[a-z])(?=.*?\d)(?=.*?[!-/:-@[-`{-~])[!-~]{6,}+\z#i|confirmed',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
