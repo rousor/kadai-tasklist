@@ -23,7 +23,7 @@ class TasksController extends Controller
                 'tasks' => $tasks,
             ]);
         }else {
-            return view('welcome');
+            return redirect('/');
         }
         /**
          * $tasks = Task::all();
@@ -86,7 +86,7 @@ class TasksController extends Controller
                 'task' => $task,
             ]);
         }else {
-            return view('welcome');
+            return redirect('/');
         }
     }
 
@@ -104,7 +104,7 @@ class TasksController extends Controller
                 'task' => $task,
             ]);
         }else {
-            return view('welcome');
+            return redirect('/');
         }
     }
 
@@ -117,15 +117,18 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'content' => 'required|max:191',
-            'status' => 'required|max:191',
-        ]);
-        
-        $task = Task::find($id);
-        $task->content = $request->content;
-        $task->status = $request->status;
-        $task->save();
+
+            $this->validate($request, [
+                'content' => 'required|max:191',
+                'status' => 'required|max:191',
+            ]);
+ 
+            $task = Task::find($id);
+            if (\Auth::id() === $task->user_id) {
+                $task->content = $request->content;
+                $task->status = $request->status;
+                $task->save();
+            }
 
         return redirect('/');
     }
@@ -141,9 +144,7 @@ class TasksController extends Controller
         $task = Task::find($id);
         if (\Auth::id() === $task->user_id) {
             $task->delete();
-        }else {
-            return redirect('/');
         }
-        
+        return redirect('/');
     }
 }
