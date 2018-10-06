@@ -23,7 +23,7 @@ class TasksController extends Controller
                 'tasks' => $tasks,
             ]);
         }else {
-            return redirect('/');
+            return view('welcome');
         }
         /**
          * $tasks = Task::all();
