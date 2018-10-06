@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>id = {{ $task->id }} のタスク詳細ページ</h1>
+    <h1>id =タスク詳細ページ（{{ $task->id }}）</h1>
 
     <table class="table table-bordered">
         <tr>
@@ -16,6 +16,14 @@
         <tr>
             <th class="active">タスク</th>
             <td>{{ $task->content }}</td>
+        </tr>
+        <tr>
+            <th class="active">更新日時</th>
+            <td>{{ $task->created_at->format('Y年m月d日 H:00') }} </td>
+        </tr>
+        <tr>
+            <th class="active">作成日時</th>
+            <td>{{ $task->created_at->format('Y年m月d日 H:00')  }}</td>
         </tr>
     </table>
 

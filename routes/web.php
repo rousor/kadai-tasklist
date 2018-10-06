@@ -38,3 +38,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('tasks', 'TasksController');
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
 });
+
+########################################################################################
+//違反
